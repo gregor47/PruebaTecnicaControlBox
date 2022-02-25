@@ -1,0 +1,21 @@
+﻿@model List<Front.Models.Oficinas>;
+
+<div class="form-group">
+    <label label-for="corresponsal">Oficina</label>
+    <select id="selectoficina" class="form-control">
+        <option value="">Seleccione Oficina</option>
+        @foreach (var item in Model)
+        {
+            <option value="@item.OFI_NOMBRE">@item.OFI_NOMBRE</option>
+        }
+    </select>
+</div>
+
+<script>
+    $('#selectoficina').on('change', function () {
+        console.log('change');
+        gettable();
+    });
+
+
+</script>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CORRESPONSALES">
+    <Key>
+      <PropertyRef Name="COR_CORRESPONSAL_ID" />
+    </Key>
+    <Property Name="COR_CORRESPONSAL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COR_NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'C:\USERS\GJIMENEZ\SOURCE\REPOS\GREGORYJIMENEZ\API\APP_DATA\DATACONTEXT.MDF.dbo.OFICINAS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="OFICINAS">
+    <Key>
+      <PropertyRef Name="OFI_CORRESPONSAL_ID" />
+    </Key>
+    <Property Name="OFI_NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="OFI_CORRESPONSAL_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DataContextModelStoreContainer">
+    <EntitySet Name="CORRESPONSALES" EntityType="Self.CORRESPONSALES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OFICINAS" EntityType="Self.OFICINAS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [OFICINAS].[OFI_NOMBRE] AS [OFI_NOMBRE], 
+    [OFICINAS].[OFI_CORRESPONSAL_ID] AS [OFI_CORRESPONSAL_ID]
+    FROM [dbo].[OFICINAS] AS [OFICINAS]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

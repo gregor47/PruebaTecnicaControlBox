@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataContextModelStoreContainer" CdmEntityContainer="DataContextEntities">
+    <EntitySetMapping Name="CORRESPONSALES">
+      <EntityTypeMapping TypeName="DataContextModel.CORRESPONSALES">
+        <MappingFragment StoreEntitySet="CORRESPONSALES">
+          <ScalarProperty Name="COR_NOMBRE" ColumnName="COR_NOMBRE" />
+          <ScalarProperty Name="COR_CORRESPONSAL_ID" ColumnName="COR_CORRESPONSAL_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OFICINAS">
+      <EntityTypeMapping TypeName="DataContextModel.OFICINAS">
+        <MappingFragment StoreEntitySet="OFICINAS">
+          <ScalarProperty Name="OFI_CORRESPONSAL_ID" ColumnName="OFI_CORRESPONSAL_ID" />
+          <ScalarProperty Name="OFI_NOMBRE" ColumnName="OFI_NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

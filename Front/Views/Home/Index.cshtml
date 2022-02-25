@@ -1,0 +1,71 @@
+﻿@model List<Front.Models.Corresponsales>;
+@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div class="text-center">
+    <h1 class="display-4">Control Box Prueba Tecnica</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">Aprende ASP.NET Core</a>.</p>
+</div>
+
+
+<hr />
+
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <div class="form-group">
+                <label label-for="corresponsal">Corresponsal</label>
+                <select id="selectcorr" class="form-control" >
+                    <option value="">Seleccione Corresponsal</option>
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.COR_CORRESPONSAL_ID">@item.COR_NOMBRE - @item.COR_CORRESPONSAL_ID</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md">
+            <div id="divSelect"></div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md">
+            <div id="divTable"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $('#selectcorr').on('change', function () {
+        console.log('change');
+        getoficina();
+    });
+
+    
+
+    var getoficina = async () => {
+        var idofi = $('#selectcorr').val();
+        var url = '@Url.Action("GetOficinas", "Home")';
+        $("#divSelect").hide();
+        $("#divSelect").load(url, { id: idofi }, (response) => {
+            console.log(response);
+            $("#divSelect").show();
+        });
+    }
+
+    var gettable = async () => {
+        var oficina = $('#selectoficina').val();
+        var url = '@Url.Action("GetPartialTable", "Home")';
+        $("#divTable").hide();
+        $("#divTable").load(url, { oficina: oficina }, (response) => {
+            console.log(response);
+            $("#divTable").show();
+        });
+    }
+</script>
